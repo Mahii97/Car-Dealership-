@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Add Review | Car Dealership Review{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="card-title mb-4">Add a Review</h3>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="car_model" class="form-label">Car Make/Model</label>
+            <select class="form-select" id="car_model" name="car_model" required>
+              <option value="">Select a car</option>
+              {% for model in car_models %}
+                <option value="{{ model.id }}">{{ model.make.name }} {{ model.name }} ({{ model.year }})</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="review" class="form-label">Your Review</label>
+            <textarea class="form-control" id="review" name="review" rows="4" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Did you purchase a car?</label><br>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="purchase" id="purchase_yes" value="yes" required>
+              <label class="form-check-label" for="purchase_yes">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="purchase" id="purchase_no" value="no" required>
+              <label class="form-check-label" for="purchase_no">No</label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="purchase_date" class="form-label">Purchase Date</label>
+            <input type="date" class="form-control" id="purchase_date" name="purchase_date">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit Review</button>
+        </form>
+        <a href="{% url 'dealer_details' dealer_id %}" class="btn btn-link mt-3">Back to Dealer</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

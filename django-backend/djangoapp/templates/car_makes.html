@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Car Makes | Car Dealership Review{% endblock %}
+{% block content %}
+<h1 class="mb-4 fw-semibold" style="font-family: 'Poppins', 'Roboto', sans-serif;">Car Makes</h1>
+<p class="lead mb-4" style="font-family: 'Poppins', 'Roboto', sans-serif;">Explore top car manufacturers and their unique strengths.</p>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for make in car_makes %}
+    <div class="col">
+      <div class="card h-100 shadow-sm rounded-lg mx-2 my-3" style="background: #fff;">
+        {% if make.name == "Toyota" %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.png" class="card-img-top p-4" alt="Toyota Logo" style="height: 120px; object-fit: contain; background: #f8f9fa;">
+        {% elif make.name == "Ford" %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" class="card-img-top p-4" alt="Ford Logo" style="height: 120px; object-fit: contain; background: #f8f9fa;">
+        {% elif make.name == "BMW" %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" class="card-img-top p-4" alt="BMW Logo" style="height: 120px; object-fit: contain; background: #f8f9fa;">
+        {% elif make.name == "Honda" %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Honda-logo.svg" class="card-img-top p-4" alt="Honda Logo" style="height: 120px; object-fit: contain; background: #f8f9fa;">
+        {% elif make.name == "Mercedes-Benz" %}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg" class="card-img-top p-4" alt="Mercedes-Benz Logo" style="height: 120px; object-fit: contain; background: #f8f9fa;">
+        {% else %}
+          <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&w=400" class="card-img-top p-4" alt="Car Make" style="height: 120px; object-fit: contain; background: #f8f9fa;">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title fw-semibold" style="font-family: 'Poppins', 'Roboto', sans-serif;">{{ make.name }}</h5>
+          <p class="card-text">{{ make.description }}</p>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="col"><div class="alert alert-warning">No car makes found.</div></div>
+  {% endfor %}
+</div>
+{% endblock %}

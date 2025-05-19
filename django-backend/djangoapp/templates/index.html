@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Home | Car Dealership Review{% endblock %}
+{% block content %}
+<div class="container-fluid px-0 mb-5">
+  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Toyota"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="BMW"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Ford"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Honda"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Mercedes-Benz"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://paultan.org/image/2023/09/2024-Toyota-Century-SUV-launch-event-20.jpg" class="d-block w-100" alt="Toyota" style="max-height: 420px; object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+          <h3 class="fw-bold">Toyota</h3>
+          <p>Experience reliability and innovation with Toyota's latest models.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.thedrive.com/uploads/2022/10/11/P90481921.jpeg?auto=webp&auto=webp&optimize=high&quality=70&width=3840" class="d-block w-100" alt="BMW" style="max-height: 420px; object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+          <h3 class="fw-bold">BMW</h3>
+          <p>Discover luxury and performance with BMW's iconic lineup.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.cars.com/cldstatic/wp-content/uploads/ford-f-150-platinum-2024-exterior-oem-03.jpg" class="d-block w-100" alt="Ford" style="max-height: 420px; object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+          <h3 class="fw-bold">Ford</h3>
+          <p>Built tough: Explore Ford's legendary trucks and cars.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.thedrive.com/uploads/2022/10/17/CRV11.jpg?auto=webp" class="d-block w-100" alt="Honda" style="max-height: 420px; object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+          <h3 class="fw-bold">Honda</h3>
+          <p>Efficiency meets reliability in every Honda vehicle.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.automobilesreview.com/img/2023-mercedes-benz-s63-amg-e-performance/mercedes-benz-s63-amg-e-performance-2023-007.jpg" class="d-block w-100" alt="Mercedes-Benz" style="max-height: 420px; object-fit: cover;">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+          <h3 class="fw-bold">Mercedes-Benz</h3>
+          <p>Luxury and advanced engineering from Mercedes-Benz.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="container mt-5">
+  <h2 class="fw-semibold mb-3" style="font-family: 'Poppins', 'Roboto', sans-serif;">Welcome to CarDealr</h2>
+  <p class="lead">Find, review, and compare the best car dealerships and models. Start your journey to the perfect car today!</p>
+  <a href="{% url 'car_models' %}" class="btn btn-primary btn-lg mt-3">Browse Car Models</a>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Car Models | Car Dealership Review{% endblock %}
+{% block content %}
+<h1 class="mb-4 fw-semibold" style="font-family: 'Poppins', 'Roboto', sans-serif;">Car Models</h1>
+<form method="get" class="mb-4">
+  <div class="input-group input-group-lg">
+    <input type="text" name="search" class="form-control" placeholder="Search by car model name..." value="{{ request.GET.search|default:'' }}">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for model in car_models %}
+    <div class="col">
+      <div class="card h-100 shadow-sm rounded-lg mx-2 my-3" style="background: #fff;">
+        {# Assign images to car models by their forloop.counter #}
+        {% if forloop.counter == 1 %}
+          <img src="https://www.pcgamesn.com/wp-content/sites/pcgamesn/2023/03/gta-5-online-weekly-update-ocelot-virtue-hypercar.jpg" class="card-img-top" alt="Car 1" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 2 %}
+          <img src="https://bringatrailer.com/wp-content/uploads/2022/08/2009_rolls-royce_phantom-drophead-coupe_2009_rolls-royce_phantom-drophead-coupe_66648ee7-9e4a-48a0-8ca9-6e475bcd4b43-7CXJTe-18404-18405-scaled.jpg" class="card-img-top" alt="Car 2" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 3 %}
+          <img src="https://cdni.autocarindia.com/ExtraImages/20210406061737_Mahindra_Thar_RT_lead.jpg" class="card-img-top" alt="Car 3" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 4 %}
+          <img src="https://s1.cdn.autoevolution.com/images/news/gallery/2024-bugatti-w16-mistral-revealed-the-ultimate-roadster-costs-5-million_12.jpg" class="card-img-top" alt="Car 4" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 5 %}
+          <img src="https://images.search.yahoo.com/images/view;_ylt=AwrO_Sk_PCtoD6UzNCKJzbkF;_ylu=c2VjA3NyBHNsawNpbWcEb2lkA2YyYjBiYjM1ZGQ2ZjkzN2U5MWM0YmViOTJiZGIwZDQxBGdwb3MDOARpdANiaW5n?back=https%3A%2F%2Fimages.search.yahoo.com%2Fsearch%2Fimages%3Fp%3Dnew%2Bcars%2Bsport%2B%2Bhigh%2Bprofile%26ei%3DUTF-8%26type%3DE210US714G0%26fr%3Dmcafee%26fr2%3Dp%253As%252Cv%253Ai%252Cm%253Asb-top%26tab%3Dorganic%26ri%3D8&w=1280&h=720&imgurl=i.ytimg.com%2Fvi%2Ft4zYAbfDhyE%2Fmaxresdefault.jpg&rurl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dt4zYAbfDhyE&size=148KB&p=new+cars+sport+high+profile&oid=f2b0bb35dd6f937e91c4beb92bdb0d41&fr2=p%3As%2Cv%3Ai%2Cm%3Asb-top&fr=mcafee&tt=10+New+Sports+Cars+Coming+in+2023%21+-+YouTube&b=0&ni=120&no=8&ts=&tab=organic&sigr=sx_fRNcleZsc&sigb=j94qcKkwzcdK&sigi=YGsVhunrjdOP&sigt=qS1g.J3gXIJR&.crumb=0zoqjehmpw7&fr=mcafee&fr2=p%3As%2Cv%3Ai%2Cm%3Asb-top&type=E210US714G0" class="card-img-top" alt="Car 5" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 6 %}
+          <img src="https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/ferrari-vision-gt-front-three-quarter.jpg" class="card-img-top" alt="Car 6" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 7 %}
+          <img src="https://www.carscoops.com/wp-content/uploads/2019/07/5ab71e39-2020-lotus-evija-1024x555.jpg" class="card-img-top" alt="Car 7" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 8 %}
+          <img src="https://www.awesome11.com/wp-content/uploads/2016/10/Sports-Cars.jpg" class="card-img-top" alt="Car 8" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 9 %}
+          <img src="https://images.hgmsites.net/hug/mclaren-570s-mso-x_100641345_h.jpg" class="card-img-top" alt="Car 9" style="height: 180px; object-fit: cover;">
+        {% elif forloop.counter == 10 %}
+          <img src="https://hips.hearstapps.com/hmg-prod/images/2024-rolls-royce-phantom-102-64bad70ba7661.jpg?crop=0.485xw:0.650xh;0.316xw,0.224xh&resize=768:*" class="card-img-top" alt="Car 10" style="height: 180px; object-fit: cover;">
+        {% else %}
+          <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&w=400" class="card-img-top" alt="Car image" style="height: 180px; object-fit: cover;">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title fw-semibold" style="font-family: 'Poppins', 'Roboto', sans-serif;">{{ model.name }} <span class="text-muted">({{ model.year }})</span></h5>
+          <p class="card-text mb-2">Make: <span class="fw-bold">{{ model.make.name }}</span></p>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="col"><div class="alert alert-warning">No car models found.</div></div>
+  {% endfor %}
+</div>
+{% endblock %}

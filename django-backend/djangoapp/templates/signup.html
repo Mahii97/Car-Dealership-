@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up | Car Dealership Review{% endblock %}
+{% block content %}
+<div class="row justify-content-center align-items-center" style="min-height: 60vh;">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow-sm rounded-lg p-4">
+      <div class="card-body">
+        <h2 class="card-title mb-4 fw-semibold text-center" style="font-family: 'Poppins', 'Roboto', sans-serif;">Create an Account</h2>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-person"></i></span>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <input type="password" class="form-control" id="password" name="password" placeholder="At least 8 characters, letters & numbers" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+            </div>
+            <div class="form-text">Password must be at least 8 characters and contain both letters and numbers.</div>
+            {% if suggested_password %}
+              <div class="alert alert-info mt-2">Try this strong password: <span class="fw-bold">{{ suggested_password }}</span></div>
+            {% endif %}
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mt-2">Sign Up <i class="bi bi-person-plus ms-1"></i></button>
+        </form>
+        <div class="text-center mt-3">
+          <span>Already have an account?</span> <a href="{% url 'login' %}" class="fw-semibold">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
